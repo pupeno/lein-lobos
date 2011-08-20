@@ -1,3 +1,4 @@
+;;;; Copyright © 2011 José Pablo Fernández Silva
 (ns lein-lobos.test.core
   (:use [lein-lobos.core])
   (:use [clojure.test]))
