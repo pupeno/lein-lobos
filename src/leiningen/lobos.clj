@@ -7,7 +7,7 @@
   (eval-in-project project
     `(do
        (require 'lobos.config 'lobos.core)
-       (lobos.core/run))
+       (lobos.core/migrate))
     nil nil '(require 'lobos.config 'lobos.core)))
 
 (defn rollback [project]
@@ -18,7 +18,7 @@
     nil nil '(require 'lobos.config 'lobos.core)))
 
 (defn lobos
-  "Run Lobos migrations."
+  "Run Lobos commands."
   {:help-arglists '([migrate rollback])
    :subtasks [#'migrate #'rollback]}
   ([] (println (help-for "lobos")))
