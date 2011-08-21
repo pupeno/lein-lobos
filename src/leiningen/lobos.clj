@@ -6,14 +6,12 @@
 (defn migrate [project]
   (eval-in-project project
     `(do
-       (require 'lobos.config 'lobos.core)
        (lobos.core/migrate))
     nil nil '(require 'lobos.config 'lobos.core)))
 
 (defn rollback [project]
   (eval-in-project project
     `(do
-       (require 'lobos.config 'lobos.core)
        (lobos.core/rollback))
     nil nil '(require 'lobos.config 'lobos.core)))
 
