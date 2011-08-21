@@ -6,14 +6,16 @@
 (defn migrate [project]
   (eval-in-project project
     `(do
+       (lobos.connectivity/open-global (assoc lobos.config/db :unsafe true)) ; Establish a connection only when none exists (unsafe true)
        (lobos.core/migrate))
-    nil nil '(require 'lobos.config 'lobos.core)))
+    nil nil '(require 'lobos.config 'lobos.core 'lobos.connectivity)))
 
 (defn rollback [project]
   (eval-in-project project
     `(do
+       (lobos.connectivity/open-global (assoc lobos.config/db :unsafe true)) ; Establish a connection only when none exists (unsafe true)
        (lobos.core/rollback))
-    nil nil '(require 'lobos.config 'lobos.core)))
+    nil nil '(require 'lobos.config 'lobos.core 'lobos.connectivity)))
 
 (defn lobos
   "Run Lobos commands."
