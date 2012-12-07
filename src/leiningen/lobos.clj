@@ -7,14 +7,16 @@
   (eval-in-project project
     `(do
        (lobos.connectivity/open-global (assoc lobos.config/db :unsafe true)) ; Establish a connection only when none exists (unsafe true)
-       (lobos.core/migrate))
-    '(require 'lobos.config 'lobos.core 'lobos.connectivity)))
+       (binding [lobos.migration/*reload-migrations* false]
+         (lobos.core/migrate)))
+    '(require 'lobos.config 'lobos.core 'lobos.connectivity 'lobos.migration)))
 
 (defn rollback [project]
   (eval-in-project project
     `(do
        (lobos.connectivity/open-global (assoc lobos.config/db :unsafe true)) ; Establish a connection only when none exists (unsafe true)
-       (lobos.core/rollback))
+       (binding [lobos.migration/*reload-migrations* false]
+         (lobos.core/rollback)))
     '(require 'lobos.config 'lobos.core 'lobos.connectivity)))
 
 (defn lobos

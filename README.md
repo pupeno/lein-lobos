@@ -6,10 +6,10 @@
 To install, run
 
 ```shell
-lein plugin install lein-lobos 0.8.0-SNAPSHOT
+lein plugin install lein-lobos 1.0.0-beta1
 ```
 
-replacing 0.8.0-SNAPSHOT for [the version you
+replacing 1.0.0-beta1 with [the version you
 want](http://clojars.org/lein-lobos). The intention is to keep it in sync with
 Lobos itself so you should use the same version of both.
 
